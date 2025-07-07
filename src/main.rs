@@ -1,26 +1,69 @@
 use yew::prelude::*;
-use models::get_random_question_sequence;
+use wasm_bindgen_futures::spawn_local;
+use models::{get_random_question_sequence_from_list, get_fallback_questions, load_questions_from_csv, console_log};
 use components::QuestionComponent;
 
 mod models;
 mod components;
 
 const QUIZ_SIZE: usize = 5; // Reduced to match our example set
-const TOTAL_QUESTIONS: usize = 10; // Set to the number of questions in our example
 
 #[derive(Clone, PartialEq)]
 enum QuizState {
+    Loading,
     InProgress,
     Completed,
 }
 
 #[function_component(App)]
 fn app() -> Html {
-    let questions = use_state(|| get_random_question_sequence(TOTAL_QUESTIONS, QUIZ_SIZE));
+    let questions = use_state(Vec::new);
+    let random_questions = use_state(Vec::new);
     let current_question = use_state(|| 0);
     let selected_answers = use_state(|| vec![None; QUIZ_SIZE]);
     let is_submitted = use_state(|| false);
-    let quiz_state = use_state(|| QuizState::InProgress);
+    let quiz_state = use_state(|| QuizState::Loading);
+    let loading_error = use_state(|| false);
+    
+    // Load questions when the component mounts
+    {
+        let questions = questions.clone();
+        let random_questions = random_questions.clone();
+        let quiz_state = quiz_state.clone();
+        let loading_error = loading_error.clone();
+        
+        use_effect(move || {
+            spawn_local(async move {
+                console_log("Loading questions from CSV...");
+                
+                match load_questions_from_csv().await {
+                    Ok(loaded_questions) => {
+                        if loaded_questions.is_empty() {
+                            console_log("CSV loaded but no questions found, using fallback");
+                            let fallback = get_fallback_questions();
+                            questions.set(fallback.clone());
+                            random_questions.set(get_random_question_sequence_from_list(&fallback, QUIZ_SIZE));
+                        } else {
+                            console_log(&format!("Successfully loaded {} questions", loaded_questions.len()));
+                            questions.set(loaded_questions.clone());
+                            random_questions.set(get_random_question_sequence_from_list(&loaded_questions, QUIZ_SIZE));
+                        }
+                        quiz_state.set(QuizState::InProgress);
+                    },
+                    Err(_) => {
+                        console_log("Failed to load questions from CSV, using fallback");
+                        loading_error.set(true);
+                        let fallback = get_fallback_questions();
+                        questions.set(fallback.clone());
+                        random_questions.set(get_random_question_sequence_from_list(&fallback, QUIZ_SIZE));
+                        quiz_state.set(QuizState::InProgress);
+                    }
+                }
+            });
+            
+            || ()
+        });
+    }
     
     let current_question_index = *current_question;
     let on_option_select = {
@@ -57,13 +100,15 @@ fn app() -> Html {
     
     let on_retry = {
         let questions = questions.clone();
+        let random_questions = random_questions.clone();
         let current_question = current_question.clone();
         let selected_answers = selected_answers.clone();
         let is_submitted = is_submitted.clone();
         let quiz_state = quiz_state.clone();
         
         Callback::from(move |_| {
-            questions.set(get_random_question_sequence(TOTAL_QUESTIONS, QUIZ_SIZE));
+            // We already have the questions loaded, just need to get a new random sequence
+            random_questions.set(get_random_question_sequence_from_list(&questions, QUIZ_SIZE));
             current_question.set(0);
             selected_answers.set(vec![None; QUIZ_SIZE]);
             is_submitted.set(false);
@@ -71,17 +116,7 @@ fn app() -> Html {
         })
     };
     
-    let calculate_score = || {
-        let mut score = 0;
-        for (i, answer) in (*selected_answers).iter().enumerate() {
-            if let Some(selected) = answer {
-                if *selected == questions[i].correct_answer_index {
-                    score += 1;
-                }
-            }
-        }
-        score
-    };
+    // Nothing here - removing unused code
     
     html! {
         <div class="app-container">
@@ -100,55 +135,90 @@ fn app() -> Html {
             
             {
                 match *quiz_state {
-                    QuizState::InProgress => {
-                        let q = &questions[current_question_index];
-                        let selected = (*selected_answers)[current_question_index];
-                        let submitted = *is_submitted;
-                        
+                    QuizState::Loading => {
                         html! {
-                            <>
-                                <QuestionComponent 
-                                    question={q.clone()} 
-                                    selected_option={selected}
-                                    is_submitted={submitted}
-                                    on_select={on_option_select}
-                                />
-                                
-                                <div class="quiz-controls">
-                                    {
-                                        if !submitted {
-                                            html! {
-                                                <button 
-                                                    class="submit-btn"
-                                                    onclick={on_submit}
-                                                    disabled={selected.is_none()}
-                                                >
-                                                    { "Soumettre" }
-                                                </button>
-                                            }
-                                        } else {
-                                            html! {
-                                                <button 
-                                                    class="next-btn"
-                                                    onclick={on_next}
-                                                >
-                                                    { 
-                                                        if current_question_index < QUIZ_SIZE - 1 {
-                                                            "Question Suivante"
-                                                        } else {
-                                                            "Voir les Résultats"
+                            <div class="loading-container">
+                                <div class="loading-spinner"></div>
+                                <p>{ "Chargement des questions..." }</p>
+                                {
+                                    if *loading_error {
+                                        html! {
+                                            <p class="loading-error">
+                                                { "Un problème est survenu lors du chargement des questions externes. " }
+                                                { "Des questions de secours seront utilisées." }
+                                            </p>
+                                        }
+                                    } else {
+                                        html! {}
+                                    }
+                                }
+                            </div>
+                        }
+                    },
+                    QuizState::InProgress => {
+                        if random_questions.is_empty() {
+                            html! {
+                                <div class="error-container">
+                                    <p>{ "Impossible de charger les questions. Veuillez rafraîchir la page." }</p>
+                                </div>
+                            }
+                        } else {
+                            let q = &random_questions[current_question_index];
+                            let selected = (*selected_answers)[current_question_index];
+                            let submitted = *is_submitted;
+                            
+                            html! {
+                                <>
+                                    <QuestionComponent 
+                                        question={q.clone()} 
+                                        selected_option={selected}
+                                        is_submitted={submitted}
+                                        on_select={on_option_select}
+                                    />
+                                    
+                                    <div class="quiz-controls">
+                                        {
+                                            if !submitted {
+                                                html! {
+                                                    <button 
+                                                        class="submit-btn"
+                                                        onclick={on_submit}
+                                                        disabled={selected.is_none()}
+                                                    >
+                                                        { "Soumettre" }
+                                                    </button>
+                                                }
+                                            } else {
+                                                html! {
+                                                    <button 
+                                                        class="next-btn"
+                                                        onclick={on_next}
+                                                    >
+                                                        { 
+                                                            if current_question_index < QUIZ_SIZE - 1 {
+                                                                "Question Suivante"
+                                                            } else {
+                                                                "Voir les Résultats"
+                                                            }
                                                         }
-                                                    }
-                                                </button>
+                                                    </button>
+                                                }
                                             }
                                         }
-                                    }
-                                </div>
-                            </>
+                                    </div>
+                                </>
+                            }
                         }
                     },
                     QuizState::Completed => {
-                        let score = calculate_score();
+                        let mut score = 0;
+                        for (i, answer) in (*selected_answers).iter().enumerate() {
+                            if let Some(selected) = answer {
+                                if *selected == random_questions[i].correct_answer_index {
+                                    score += 1;
+                                }
+                            }
+                        }
                         let percentage = (score as f32 / QUIZ_SIZE as f32 * 100.0) as usize;
                         
                         // Choose emoji based on score

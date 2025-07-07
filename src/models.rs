@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
-use std::io::Cursor;
+use wasm_bindgen::{JsCast, prelude::*};
+use wasm_bindgen_futures::JsFuture;
+use web_sys::{Request, RequestInit, RequestMode, Response};
 
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Question {
@@ -12,6 +14,7 @@ pub struct Question {
 #[derive(Clone, Debug, Deserialize)]
 struct QuestionRecord {
     #[serde(default)]
+    #[allow(dead_code)]
     id: usize,
     question: String,
     option1: String,
@@ -40,23 +43,65 @@ impl Question {
     }
 }
 
-// CSV data embedded at compile time
-const CSV_DATA: &str = include_str!("../static/questions.csv");
+// Get the base URL for the application, handles both development and production
+fn get_base_url() -> String {
+    let window = web_sys::window().expect("should have a window in this context");
+    let document = window.document().expect("should have a document on window");
+    let location = document.location().expect("document should have a location");
+    
+    // Get pathname to determine if we're in /quiz-app/ or root
+    let pathname = location.pathname().unwrap_or_default();
+    
+    // If pathname starts with /quiz-app/, we're in production
+    if pathname.starts_with("/quiz-app/") {
+        return "/quiz-app/".to_string();
+    } else {
+        return "".to_string();
+    }
+}
 
-// This function returns all quiz questions loaded from CSV
-pub fn get_all_questions() -> Vec<Question> {
-    match parse_questions_from_csv() {
-        Ok(questions) => questions,
+// Load questions from CSV file asynchronously
+pub async fn load_questions_from_csv() -> Result<Vec<Question>, JsValue> {
+    // Determine base URL and build the path to CSV file
+    let base_url = get_base_url();
+    let csv_url = format!("{}questions.csv", base_url);
+    
+    console_log(&format!("Fetching questions from: {}", csv_url));
+    
+    // Create request
+    let opts = RequestInit::new();
+    opts.set_method("GET");
+    opts.set_mode(RequestMode::Cors);
+    
+    let request = Request::new_with_str_and_init(&csv_url, &opts)?;
+    
+    // Fetch request
+    let window = web_sys::window().unwrap();
+    let resp_value = JsFuture::from(window.fetch_with_request(&request)).await?;
+    let resp: Response = resp_value.dyn_into().unwrap();
+    
+    if !resp.ok() {
+        console_log(&format!("Failed to load CSV: HTTP status {}", resp.status()));
+        return Err(JsValue::from_str("Failed to load questions.csv"));
+    }
+    
+    // Get text from response
+    let text = JsFuture::from(resp.text()?).await?;
+    let csv_text = text.as_string().unwrap();
+    
+    // Parse CSV
+    match parse_csv_string(&csv_text) {
+        Ok(questions) => Ok(questions),
         Err(e) => {
-            console_log(&format!("Error loading questions: {}", e));
-            get_fallback_questions()
+            console_log(&format!("Error parsing CSV: {:?}", e));
+            Err(JsValue::from_str("Failed to parse questions.csv"))
         }
     }
 }
 
-// Parse the embedded CSV data
-fn parse_questions_from_csv() -> Result<Vec<Question>, csv::Error> {
-    let mut reader = csv::Reader::from_reader(CSV_DATA.as_bytes());
+// Parse CSV data from a string
+fn parse_csv_string(csv_data: &str) -> Result<Vec<Question>, csv::Error> {
+    let mut reader = csv::Reader::from_reader(csv_data.as_bytes());
     let mut questions = Vec::new();
     
     for result in reader.deserialize() {
@@ -68,12 +113,12 @@ fn parse_questions_from_csv() -> Result<Vec<Question>, csv::Error> {
 }
 
 // Helper function for logging to console
-fn console_log(msg: &str) {
+pub fn console_log(msg: &str) {
     web_sys::console::log_1(&wasm_bindgen::JsValue::from_str(msg));
 }
 
 // This function returns a fallback list of questions in case CSV loading fails
-fn get_fallback_questions() -> Vec<Question> {
+pub fn get_fallback_questions() -> Vec<Question> {
     vec![
         Question::new(
             "Dans quelle période préhistorique les premiers outils en pierre taillée ont-ils été utilisés ?",
@@ -105,24 +150,42 @@ fn get_fallback_questions() -> Vec<Question> {
             ],
             0
         ),
+        Question::new(
+            "Quelle invention marque le début de la sédentarisation au Néolithique ?",
+            vec![
+                "L'agriculture", 
+                "La roue", 
+                "L'écriture", 
+                "Le feu"
+            ],
+            0
+        ),
+        Question::new(
+            "Quelle ville grecque antique est connue pour avoir inventé la démocratie ?",
+            vec![
+                "Sparte", 
+                "Athènes", 
+                "Corinthe", 
+                "Thèbes"
+            ],
+            1
+        ),
     ]
 }
 
-// Function to get a random selection of N consecutive questions
-pub fn get_random_question_sequence(_total_questions: usize, count: usize) -> Vec<Question> {
+// Function to get a random selection of N consecutive questions from loaded questions
+pub fn get_random_question_sequence_from_list(questions: &[Question], count: usize) -> Vec<Question> {
     use rand::{Rng, SeedableRng};
     use rand::rngs::SmallRng;
     
-    let all_questions = get_all_questions();
-    
     // Handle the case where we don't have enough questions
-    if all_questions.len() <= count {
-        return all_questions;
+    if questions.len() <= count {
+        return questions.to_vec();
     }
     
-    let max_start_index = all_questions.len() - count;
+    let max_start_index = questions.len() - count;
     let mut rng = SmallRng::from_entropy();
     let start_index = rng.gen_range(0..=max_start_index);
     
-    all_questions[start_index..(start_index + count)].to_vec()
+    questions[start_index..(start_index + count)].to_vec()
 }
