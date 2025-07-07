@@ -49,13 +49,19 @@ fn get_base_url() -> String {
     let document = window.document().expect("should have a document on window");
     let location = document.location().expect("document should have a location");
     
-    // Get pathname to determine if we're in /quiz-app/ or root
+    // Get href and pathname to determine if we're in /quiz-app/ or root
+    let href = location.href().unwrap_or_default();
     let pathname = location.pathname().unwrap_or_default();
     
-    // If pathname starts with /quiz-app/, we're in production
-    if pathname.starts_with("/quiz-app/") {
+    console_log(&format!("Current location: {}", href));
+    console_log(&format!("Current pathname: {}", pathname));
+    
+    // If URL contains github.io/quiz-app/ or pathname starts with /quiz-app/, we're in production
+    if href.contains("github.io/quiz-app/") || pathname.starts_with("/quiz-app/") {
+        console_log("Using production base URL: /quiz-app/");
         return "/quiz-app/".to_string();
     } else {
+        console_log("Using development base URL: /");
         return "".to_string();
     }
 }
