@@ -1,0 +1,17 @@
+[package]
+name = "quiz-app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = { version = "0.21", features = ["csr"] }
+wasm-bindgen = "0.2"
+web-sys = "0.3"
+js-sys = "0.3"
+getrandom = { version = "0.2", features = ["js"] }
+serde = { version = "1.0", features = ["derive"] }
+rand = { version = "0.8", features = ["small_rng"] }
+csv = "1.1"
+wasm-bindgen-futures = "0.4"
+
+
