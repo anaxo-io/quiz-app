@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link data-trunk rel="css" href="static/styles.css">
+    <link data-trunk rel="copy-file" href="static/questions.csv"/>
     <style>
         /* Basic styles directly in the HTML */
         body {
@@ -59,8 +64,6 @@
         <div>Chargement de l'application...</div>
         <div class="spinner"></div>
     </div>
-    
-    <link data-trunk rel="css" href="static/styles.css">
     <script>
         // This is just a basic loader
         window.addEventListener('DOMContentLoaded', () => {

@@ -25,44 +25,59 @@ fn app() -> Html {
     let quiz_state = use_state(|| QuizState::Loading);
     let loading_error = use_state(|| false);
     
-    // Load questions when the component mounts
+    // Load questions when the component mounts - only once
     {
         let questions = questions.clone();
         let random_questions = random_questions.clone();
         let quiz_state = quiz_state.clone();
         let loading_error = loading_error.clone();
-        
-        use_effect(move || {
-            spawn_local(async move {
-                console_log("Loading questions from CSV...");
-                
-                match load_questions_from_csv().await {
-                    Ok(loaded_questions) => {
-                        if loaded_questions.is_empty() {
-                            console_log("CSV loaded but no questions found, using fallback");
-                            let fallback = get_fallback_questions();
-                            questions.set(fallback.clone());
-                            random_questions.set(get_random_question_sequence_from_list(&fallback, QUIZ_SIZE));
-                        } else {
-                            console_log(&format!("Successfully loaded {} questions", loaded_questions.len()));
-                            questions.set(loaded_questions.clone());
-                            random_questions.set(get_random_question_sequence_from_list(&loaded_questions, QUIZ_SIZE));
+
+        use_effect_with(
+            (), move |_| {
+                let questions_clone = questions.clone();
+                let random_questions_clone = random_questions.clone();
+                let quiz_state_clone = quiz_state.clone();
+                let loading_error_clone = loading_error.clone();
+
+                spawn_local(async move {
+                    console_log("Starting to load questions...");
+                    // Only attempt to load if we haven't loaded questions yet
+                    if questions_clone.len() == 0 {
+                        match load_questions_from_csv().await {
+                            Ok(loaded_questions) => {
+                                console_log(&format!("Loaded {} questions from CSV", loaded_questions.len()));
+                                questions_clone.set(loaded_questions.clone());
+                                if loaded_questions.len() >= QUIZ_SIZE {
+                                    let random_qs = get_random_question_sequence_from_list(&loaded_questions, QUIZ_SIZE);
+                                    random_questions_clone.set(random_qs);
+                                    quiz_state_clone.set(QuizState::InProgress);
+                                } else {
+                                    console_log("Not enough questions loaded from CSV, using fallback");
+                                    loading_error_clone.set(true);
+                                    let fallback = get_fallback_questions();
+                                    questions_clone.set(fallback.clone());
+                                    let random_qs = get_random_question_sequence_from_list(&fallback, QUIZ_SIZE);
+                                    random_questions_clone.set(random_qs);
+                                    quiz_state_clone.set(QuizState::InProgress);
+                                }
+                            }
+                            Err(e) => {
+                                console_log(&format!("Error loading questions from CSV: {:?}", e));
+                                loading_error_clone.set(true);
+                                let fallback = get_fallback_questions();
+                                questions_clone.set(fallback.clone());
+                                let random_qs = get_random_question_sequence_from_list(&fallback, QUIZ_SIZE);
+                                random_questions_clone.set(random_qs);
+                                quiz_state_clone.set(QuizState::InProgress);
+                            }
                         }
-                        quiz_state.set(QuizState::InProgress);
-                    },
-                    Err(_) => {
-                        console_log("Failed to load questions from CSV, using fallback");
-                        loading_error.set(true);
-                        let fallback = get_fallback_questions();
-                        questions.set(fallback.clone());
-                        random_questions.set(get_random_question_sequence_from_list(&fallback, QUIZ_SIZE));
-                        quiz_state.set(QuizState::InProgress);
                     }
-                }
-            });
-            
-            || ()
-        });
+                });
+                
+                // Clean-up function (important to avoid memory leaks)
+                || ()
+            },
+        );
     }
     
     let current_question_index = *current_question;
