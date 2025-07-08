@@ -38,64 +38,64 @@ id,question,option1,option2,option3,option4,correct_answer_index
 37,Quel sculpteur est célèbre pour Le Penseur et Le Baiser ?,Camille Claudel,Auguste Rodin,Jean-Baptiste Carpeaux,Antoine Bourdelle,1
 38,Quel architecte a conçu la Sagrada Família à Barcelone ?,Antoni Gaudí,Le Corbusier,Frank Lloyd Wright,Norman Foster,0
 39,Quel compositeur est l’auteur des Quatre Saisons ?,Jean-Sébastien Bach,Georg Friedrich Haendel,Antonio Vivaldi,Joseph Haydn,2
-40,Quel mouvement artistique utilise le graffiti comme forme d’expression ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Le street art,3
-41,Quel philosophe grec est célèbre pour n’avoir laissé aucun écrit et avoir été condamné à mort ?,Fausse réponse 1,Fausse réponse 2,Socrate,Fausse réponse 3,2
-42,Quelle est la principale œuvre philosophique de René Descartes ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Le Discours de la méthode,3
-43,Quel philosophe allemand est connu pour la notion de “volonté de puissance” ?,Friedrich Nietzsche,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-44,Quel philosophe français est à l’origine de l’existentialisme athée ?,Jean-Paul Sartre,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-45,Dans quelle branche philosophique étudie-t-on les règles de la pensée correcte ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,La logique,3
-46,Quel est le nom du prophète fondateur de l’islam ?,Mahomet (Muhammad),Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-47,Quel texte sacré est commun aux religions juive et chrétienne ?,Fausse réponse 1,Fausse réponse 2,La Torah (Ancien Testament),Fausse réponse 3,2
-48,Dans quelle ville Jésus aurait-il été crucifié ?,Fausse réponse 1,Jérusalem,Fausse réponse 2,Fausse réponse 3,1
-49,Quel rituel chrétien symbolise la purification et l’entrée dans la communauté ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Le baptême,3
-50,Quel mot désigne le retour à la vie d’un être après la mort,"comme dans la croyance chrétienne au sujet de Jésus ?,Résurrection",Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-51,Quelle est la langue reconstituée censée être l’ancêtre des langues indo-européennes ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Le proto-indo-européen,3
-52,Que signifie l’intersectionnalité dans les études de genre ?,"C’est l’analyse croisée des différentes formes de discriminations (sexe, race, classe, orientation sexuelle, etc.)",Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-53,Qu’est-ce qu’un biais de confirmation ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,La tendance à privilégier les informations qui confirment nos croyances préexistantes,3
-54,À quel groupe appartient la langue chinoise ?,Fausse réponse 1,Aux langues sino-tibétaines,Fausse réponse 2,Fausse réponse 3,1
-55,Quelle est la différence entre un phonème et un allophone ?,"Un phonème distingue des mots, un allophone est une variante sonore d’un même phonème",Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-56,Qu’est-ce que le « machine learning » ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,C’est l’apprentissage automatique à partir de données pour faire des prédictions ou classifications,3
-57,Quel film est souvent considéré comme l’un des premiers films de science-fiction ?,Fausse réponse 1,Fausse réponse 2,Le Voyage dans la Lune de Georges Méliès (1902),Fausse réponse 3,2
-58,Que désigne le terme « domotique » ?,Fausse réponse 1,L’automatisation des tâches domestiques via des objets connectés,Fausse réponse 2,Fausse réponse 3,1
-59,Que signifie le terme “mème” sur Internet ?,Fausse réponse 1,"Une idée, image ou vidéo virale diffusée et transformée en ligne",Fausse réponse 2,Fausse réponse 3,1
-60,Quelle est la principale différence entre un robot industriel et un robot domestique ?,Fausse réponse 1,"Leur usage : production industrielle pour l’un, assistance personnelle pour l’autre",Fausse réponse 2,Fausse réponse 3,1
-61,Quelle forme juridique protège le patrimoine personnel d’un entrepreneur ?,Fausse réponse 1,"La société à responsabilité limitée (SARL, SA…)",Fausse réponse 2,Fausse réponse 3,1
-62,Que signifie « pragmatique » en linguistique ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,L’étude du langage en contexte d’usage réel,3
-63,Qu’est-ce qu’un morphème ?,Fausse réponse 1,L’unité minimale de sens dans un mot,Fausse réponse 2,Fausse réponse 3,1
-64,Quelle déclaration fondatrice a été adoptée en 1948 par l’ONU ?,Fausse réponse 1,Fausse réponse 2,La Déclaration universelle des droits de l’homme,Fausse réponse 3,2
-65,Quelle est la principale différence entre common law et droit civil ?,Fausse réponse 1,"Le common law repose sur la jurisprudence, le droit civil sur des codes écrits",Fausse réponse 2,Fausse réponse 3,1
-66,Qui a introduit le concept d’« anomie » ?,Fausse réponse 1,Émile Durkheim,Fausse réponse 2,Fausse réponse 3,1
-67,Quelle est la différence entre un délit et un crime ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Le crime est plus grave qu’un délit et entraîne des peines plus lourdes,3
-68,Quel est le principe de la blockchain ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,"Une base de données décentralisée et sécurisée, sans autorité centrale",3
-69,Quelle approche a été fondée par Freud ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,La psychanalyse,3
-70,Que signifie la séparation des pouvoirs ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,"Répartition des fonctions entre exécutif, législatif et judiciaire pour éviter les abus",3
-71,Quelle idée centrale défend le marxisme ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,La lutte des classes et l’abolition de la propriété privée des moyens de production,3
-72,Qu’est-ce qu’un contrat ?,Fausse réponse 1,Un accord entre deux ou plusieurs parties créant des obligations juridiques,Fausse réponse 2,Fausse réponse 3,1
-73,Quelle est la différence entre réalité augmentée et réalité virtuelle ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,"L’AR ajoute des éléments au monde réel, la VR immerge dans un monde 100 % numérique",3
-74,Qu’est-ce qu’un rite de passage ?,Une cérémonie marquant le passage d’un individu d’un statut social à un autre,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-75,Quelle énergie provient de la chaleur interne de la Terre ?,La géothermie,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-76,Quel est le principe de l’Hyperloop ?,Un train en lévitation dans un tube à basse pression atteignant de très hautes vitesses,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-77,Que signifie le terme « phishing » ?,Fausse réponse 1,Une fraude par courriel ou site imitant un service officiel pour voler des données,Fausse réponse 2,Fausse réponse 3,1
-78,Quelle est la différence entre un CDD et un CDI ?,"Le CDD est limité dans le temps, le CDI est à durée indéterminée",Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-79,Que sont les pédagogies alternatives ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Des approches éducatives non traditionnelles comme Montessori ou Freinet,3
-80,Quelle invention a permis la révolution industrielle ?,Fausse réponse 1,La machine à vapeur,Fausse réponse 2,Fausse réponse 3,1
-81,Quelle institution est chargée de maintenir la paix dans le monde ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,L’Organisation des Nations Unies (ONU),3
-82,Quelle est la différence entre justice civile et pénale ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,La justice civile règle les litiges entre particuliers ; la pénale punit les infractions,3
-83,Qu’est-ce qu’une puissance émergente ?,Fausse réponse 1,Un pays en développement rapide qui gagne de l’influence mondiale,Fausse réponse 2,Fausse réponse 3,1
-84,À quoi servent les biotechnologies ?,Fausse réponse 1,"À utiliser le vivant pour produire des médicaments, vaccins ou OGM",Fausse réponse 2,Fausse réponse 3,1
-85,Qu’est-ce qu’un acte administratif ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Une décision prise par une autorité publique dans le cadre de ses fonctions,3
-86,Quelle nation a remporté le plus de Coupes du Monde de football masculin ?,Fausse réponse 1,"Le Brésil, avec 5 titres",Fausse réponse 2,Fausse réponse 3,1
-87,Quel nageur détient le record du plus grand nombre de médailles olympiques ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,"Michael Phelps, avec 23 médailles d’or",3
-88,Quelle est l’altitude typique pour un saut en parachute civil ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Environ 4 000 mètres,3
-89,Où se tenaient les Jeux Olympiques dans l’Antiquité grecque ?,Fausse réponse 1,À Olympie,Fausse réponse 2,Fausse réponse 3,1
-90,En quelle année le CIO (Comité International Olympique) a-t-il été fondé ?,Fausse réponse 1,En 1894,Fausse réponse 2,Fausse réponse 3,1
-91,Quelle molécule est principalement utilisée pour fournir de l’énergie rapide dans les muscles ?,Fausse réponse 1,Fausse réponse 2,L’ATP (adénosine triphosphate),Fausse réponse 3,2
-92,Quelle est la principale conséquence d’une déshydratation modérée chez un athlète ?,Fausse réponse 1,Fausse réponse 2,Une baisse de performance physique et cognitive,Fausse réponse 3,2
-93,Quel club a remporté le plus de Ligues des champions de l’UEFA ?,Le Real Madrid,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-94,Quel cycliste a remporté 5 fois le Tour de France dans les années 1990 ?,Miguel Indurain,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-95,Que signifie le terme “fair-play” dans le sport ?,Fausse réponse 1,"Le respect des règles, de l’adversaire et de l’arbitre",Fausse réponse 2,Fausse réponse 3,1
-96,Comment appelle-t-on l’ensemble des cinq lignes sur lesquelles on écrit la musique ?,Une portée,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-97,Quel est l’instrument à cordes le plus aigu de l’orchestre classique ?,Le violon,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,0
-98,Dans quel pays est né le mouvement hip-hop ?,Fausse réponse 1,"Aux États-Unis, dans le Bronx à New York",Fausse réponse 2,Fausse réponse 3,1
-99,Quelle région du cerveau est particulièrement liée à la mémoire musicale ?,Fausse réponse 1,L’hippocampe,Fausse réponse 2,Fausse réponse 3,1
-100,Quel est le service de streaming musical le plus utilisé au monde en 2025 ?,Fausse réponse 1,Fausse réponse 2,Fausse réponse 3,Spotify,3
+40,Quel mouvement artistique utilise le graffiti comme forme d’expression ?,Le cubisme,Le pop art,Le dadaïsme,Le street art,3
+41,Quel philosophe grec est célèbre pour n’avoir laissé aucun écrit et avoir été condamné à mort ?,Platon,Aristote,Socrate,Épicure,2
+42,Quelle est la principale œuvre philosophique de René Descartes ?,Les Méditations métaphysiques,Les Principes de la philosophie,Le Monde,Le Discours de la méthode,3
+43,Quel philosophe allemand est connu pour la notion de “volonté de puissance” ?,Friedrich Nietzsche,Immanuel Kant,Georg Wilhelm Friedrich Hegel,Arthur Schopenhauer,0
+44,Quel philosophe français est à l’origine de l’existentialisme athée ?,Jean-Paul Sartre,Simone de Beauvoir,Albert Camus,Gabriel Marcel,0
+45,Dans quelle branche philosophique étudie-t-on les règles de la pensée correcte ?,L’éthique,L’esthétique,La métaphysique,La logique,3
+46,Quel est le nom du prophète fondateur de l’islam ?,Mahomet (Muhammad),Moïse,Bouddha,Jésus,0
+47,Quel texte sacré est commun aux religions juive et chrétienne ?,Le Coran,Le Nouveau Testament,La Torah (Ancien Testament),Le Talmud,2
+48,Dans quelle ville Jésus aurait-il été crucifié ?,Nazareth,Jérusalem,Bethléem,Capharnaüm,1
+49,Quel rituel chrétien symbolise la purification et l’entrée dans la communauté ?,La confirmation,La communion,La confession,Le baptême,3
+50,Quel mot désigne le retour à la vie d’un être après la mort,"comme dans la croyance chrétienne au sujet de Jésus ?,Résurrection",Réincarnation,Transmigration,Ascension,0
+51,Quelle est la langue reconstituée censée être l’ancêtre des langues indo-européennes ?,Le sumérien,Le hittite,Le sanskrit,Le proto-indo-européen,3
+52,Que signifie l’intersectionnalité dans les études de genre ?,"C’est l’analyse croisée des différentes formes de discriminations (sexe, race, classe, orientation sexuelle, etc.)",L’égalité des sexes,La parité,L’étude des genres littéraires,0
+53,Qu’est-ce qu’un biais de confirmation ?,Un raisonnement logique,Une preuve scientifique,Un doute méthodique,La tendance à privilégier les informations qui confirment nos croyances préexistantes,3
+54,À quel groupe appartient la langue chinoise ?,Aux langues indo-européennes,Aux langues sino-tibétaines,Aux langues sémitiques,Aux langues finno-ougriennes,1
+55,Quelle est la différence entre un phonème et un allophone ?,"Un phonème distingue des mots, un allophone est une variante sonore d’un même phonème",Un phonème est une lettre, un allophone est un mot,Un phonème est une syllabe, un allophone est une phrase,Un phonème est un accent, un allophone est une langue,0
+56,Qu’est-ce que le « machine learning » ?,L’apprentissage humain,L’apprentissage supervisé par un professeur,L’apprentissage par imitation,C’est l’apprentissage automatique à partir de données pour faire des prédictions ou classifications,3
+57,Quel film est souvent considéré comme l’un des premiers films de science-fiction ?,Metropolis,Le Voyage dans le temps,Le Voyage dans la Lune de Georges Méliès (1902),L’Invention du diable,2
+58,Que désigne le terme « domotique » ?,La robotique,L’automatisation des tâches domestiques via des objets connectés,La gestion des déchets,La cuisine connectée,1
+59,Que signifie le terme “mème” sur Internet ?,Un virus informatique,"Une idée, image ou vidéo virale diffusée et transformée en ligne",Un logiciel de messagerie,Un site de rencontre,1
+60,Quelle est la principale différence entre un robot industriel et un robot domestique ?,Leur taille,"Leur usage : production industrielle pour l’un, assistance personnelle pour l’autre",Leur couleur,Leur alimentation,1
+61,Quelle forme juridique protège le patrimoine personnel d’un entrepreneur ?,L’entreprise individuelle,"La société à responsabilité limitée (SARL, SA…)",La micro-entreprise,La société en nom collectif,1
+62,Que signifie « pragmatique » en linguistique ?,L’étude de la grammaire,L’étude de la phonétique,L’étude de la syntaxe,L’étude du langage en contexte d’usage réel,3
+63,Qu’est-ce qu’un morphème ?,Une lettre,L’unité minimale de sens dans un mot,Un mot composé,Un synonyme,1
+64,Quelle déclaration fondatrice a été adoptée en 1948 par l’ONU ?,La Charte de l’ONU,La Convention de Genève,La Déclaration universelle des droits de l’homme,Le Pacte de Varsovie,2
+65,Quelle est la principale différence entre common law et droit civil ?,Le common law est oral,"Le common law repose sur la jurisprudence, le droit civil sur des codes écrits",Le droit civil est religieux,Le common law est européen,1
+66,Qui a introduit le concept d’« anomie » ?,Max Weber,Émile Durkheim,Karl Marx,Auguste Comte,1
+67,Quelle est la différence entre un délit et un crime ?,Un délit est plus grave,Un crime est une infraction mineure,Un délit est jugé par un tribunal civil,Le crime est plus grave qu’un délit et entraîne des peines plus lourdes,3
+68,Quel est le principe de la blockchain ?,Un réseau social,Un algorithme de tri,Un système de vote,"Une base de données décentralisée et sécurisée, sans autorité centrale",3
+69,Quelle approche a été fondée par Freud ?,Le behaviorisme,La psychologie cognitive,La gestalt,La psychanalyse,3
+70,Que signifie la séparation des pouvoirs ?,La séparation de l’Église et de l’État,La division des classes sociales,La séparation des partis politiques,"Répartition des fonctions entre exécutif, législatif et judiciaire pour éviter les abus",3
+71,Quelle idée centrale défend le marxisme ?,La démocratie directe,La monarchie constitutionnelle,Le libéralisme,La lutte des classes et l’abolition de la propriété privée des moyens de production,3
+72,Qu’est-ce qu’un contrat ?,Un engagement moral,Un accord entre deux ou plusieurs parties créant des obligations juridiques,Un testament,Un don,1
+73,Quelle est la différence entre réalité augmentée et réalité virtuelle ?,La réalité augmentée est en 2D,La réalité virtuelle utilise des lunettes,La réalité augmentée est un jeu vidéo,"L’AR ajoute des éléments au monde réel, la VR immerge dans un monde 100 % numérique",3
+74,Qu’est-ce qu’un rite de passage ?,Une cérémonie marquant le passage d’un individu d’un statut social à un autre,Un examen scolaire,Un voyage initiatique,Un baptême religieux,0
+75,Quelle énergie provient de la chaleur interne de la Terre ?,La géothermie,L’énergie solaire,L’énergie hydraulique,L’énergie éolienne,0
+76,Quel est le principe de l’Hyperloop ?,Un train en lévitation dans un tube à basse pression atteignant de très hautes vitesses,Un avion supersonique,Un bateau à grande vitesse,Un métro automatique,0
+77,Que signifie le terme « phishing » ?,Une pêche en mer,Une fraude par courriel ou site imitant un service officiel pour voler des données,Un virus informatique,Un jeu vidéo,1
+78,Quelle est la différence entre un CDD et un CDI ?,"Le CDD est limité dans le temps, le CDI est à durée indéterminée",Le CDI est réservé aux cadres,Le CDD est réservé aux étudiants,Le CDI est un contrat saisonnier,0
+79,Que sont les pédagogies alternatives ?,L’enseignement traditionnel,L’école à la maison,L’apprentissage par cœur,Des approches éducatives non traditionnelles comme Montessori ou Freinet,3
+80,Quelle invention a permis la révolution industrielle ?,La dynamo,La machine à vapeur,Le téléphone,La radio,1
+81,Quelle institution est chargée de maintenir la paix dans le monde ?,L’OTAN,Le FMI,La Banque mondiale,L’Organisation des Nations Unies (ONU),3
+82,Quelle est la différence entre justice civile et pénale ?,La justice civile concerne les crimes,La justice pénale concerne les divorces,La justice civile règle les litiges entre particuliers ; la pénale punit les infractions,La justice pénale concerne les contrats,3
+83,Qu’est-ce qu’une puissance émergente ?,Un pays développé,Un pays en développement rapide qui gagne de l’influence mondiale,Un pays pauvre,Un pays neutre,1
+84,À quoi servent les biotechnologies ?,À fabriquer des vêtements,"À utiliser le vivant pour produire des médicaments, vaccins ou OGM",À produire de l’acier,À construire des routes,1
+85,Qu’est-ce qu’un acte administratif ?,Un acte médical,Un acte notarié,Un acte de naissance,Une décision prise par une autorité publique dans le cadre de ses fonctions,3
+86,Quelle nation a remporté le plus de Coupes du Monde de football masculin ?,L’Allemagne,"Le Brésil, avec 5 titres",L’Argentine,La France,1
+87,Quel nageur détient le record du plus grand nombre de médailles olympiques ?,Ian Thorpe,Mark Spitz,Kristin Otto,"Michael Phelps, avec 23 médailles d’or",3
+88,Quelle est l’altitude typique pour un saut en parachute civil ?,1 000 mètres,2 000 mètres,3 000 mètres,Environ 4 000 mètres,3
+89,Où se tenaient les Jeux Olympiques dans l’Antiquité grecque ?,Athènes,À Olympie,Delphes,Corinthe,1
+90,En quelle année le CIO (Comité International Olympique) a-t-il été fondé ?,1900,En 1894,1924,1948,1
+91,Quelle molécule est principalement utilisée pour fournir de l’énergie rapide dans les muscles ?,Le glucose,Le lactate,L’ATP (adénosine triphosphate),La créatine,2
+92,Quelle est la principale conséquence d’une déshydratation modérée chez un athlète ?,Une prise de poids,Une augmentation de la force,Une baisse de performance physique et cognitive,Une meilleure récupération,2
+93,Quel club a remporté le plus de Ligues des champions de l’UEFA ?,Le Real Madrid,Le FC Barcelone,Le Bayern Munich,Manchester United,0
+94,Quel cycliste a remporté 5 fois le Tour de France dans les années 1990 ?,Miguel Indurain,Lance Armstrong,Jan Ullrich,Marco Pantani,0
+95,Que signifie le terme “fair-play” dans le sport ?,La tricherie,"Le respect des règles, de l’adversaire et de l’arbitre",La compétition à tout prix,Le dopage,1
+96,Comment appelle-t-on l’ensemble des cinq lignes sur lesquelles on écrit la musique ?,Une portée,Une clé,Une gamme,Un accord,0
+97,Quel est l’instrument à cordes le plus aigu de l’orchestre classique ?,Le violon,Le violoncelle,La contrebasse,La harpe,0
+98,Dans quel pays est né le mouvement hip-hop ?,France,"Aux États-Unis, dans le Bronx à New York",Brésil,Allemagne,1
+99,Quelle région du cerveau est particulièrement liée à la mémoire musicale ?,Le cortex visuel,L’hippocampe,Le cervelet,Le bulbe rachidien,1
+100,Quel est le service de streaming musical le plus utilisé au monde en 2025 ?,Deezer,Apple Music,YouTube Music,Spotify,3
