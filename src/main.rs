@@ -6,7 +6,7 @@ use components::QuestionComponent;
 mod models;
 mod components;
 
-const QUIZ_SIZE: usize = 5; // Reduced to match our example set
+const QUIZ_SIZE: usize = 10;
 
 #[derive(Clone, PartialEq)]
 enum QuizState {
